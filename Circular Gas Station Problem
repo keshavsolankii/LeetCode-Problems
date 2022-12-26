@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+        int balance=0, deficit = 0;
+        int start = 0;
+        for(int i=0; i<gas.size(); i++)
+        {
+            balance += gas[i] - cost[i];
+            if(balance < 0)
+            {
+                start = i+1; // checking from the next index
+                deficit += balance; // storing the deficit amount and will check if remaining gas stations(index) can fulfill it or not
+                balance = 0;
+            }
+        }
+        if(balance + deficit >= 0) // If excess balance overcomes the deficit amount of the previous gas stations(index) then start index would be returned
+        return start;
+        else
+        return -1;
+    }
+};
