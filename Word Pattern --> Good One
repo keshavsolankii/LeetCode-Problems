@@ -1,0 +1,65 @@
+Given a pattern and a string s, find if s follows the same pattern.
+
+Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in s.
+
+ 
+
+Example 1:
+
+Input: pattern = "abba", s = "dog cat cat dog"
+Output: true
+Example 2:
+
+Input: pattern = "abba", s = "dog cat cat fish"
+Output: false
+Example 3:
+
+Input: pattern = "aaaa", s = "dog cat cat dog"
+Output: false
+
+
+ANSWER:-
+
+class Solution {
+public:
+    bool wordPattern(string pattern, string s) {
+        istringstream str(s);
+        vector<string> wordList;
+        unordered_map<string, bool> isVisited;
+        unordered_map<char, string> m;
+        string word;
+
+        int i = 0;
+
+        while(str >> word)
+        {
+            i++;
+            wordList.push_back(word);
+        }
+
+        if(pattern.length() != i)
+            return false;
+        else
+        {
+            for(int i=0; i<pattern.length(); i++)
+            {
+                char ch = pattern[i];
+
+                if(m[ch] == "" && isVisited[wordList[i]] == true)
+                {
+                    return false;
+                }
+                else if(m[ch] == "")
+                {
+                    m[ch] = wordList[i];
+                    isVisited[wordList[i]] = true;
+                }
+                else if(m[ch] != wordList[i])
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+};
