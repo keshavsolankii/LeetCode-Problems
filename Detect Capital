@@ -1,0 +1,26 @@
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        int count=0;
+        if(word[0] >= 97 && word[0] <= 122){
+            for(int i=1; i<word.length(); i++)
+            {
+                if(word[i] >= 65 && word[i] <= 90)
+                    return false;
+            }
+            return true;
+        }
+        else if(word[0] >= 65 && word[0] <= 90)
+        {
+            for(int i=1; i<word.length(); i++)
+            {
+                if(word[i] >= 65 && word[i] <= 90)
+                    count++;
+            }
+        }
+        if(count == word.length()-1 || count == 0)
+            return true;
+        else
+            return false;
+    }
+};
