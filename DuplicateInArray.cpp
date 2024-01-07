@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-int dupArr(int arr[], int n)
+int duplicateArray(int arr[], int n)
 {
 	int i, ans=0;
 	for(i=0; i<n; i++)
@@ -18,6 +18,6 @@ int dupArr(int arr[], int n)
 int main()
 {
 	int arr[] = {1,2,3,4,5,5};
-	int ans = dupArr(arr, 6);
+	int ans = duplicateArray(arr, 6);
 	cout<<ans;
 }
