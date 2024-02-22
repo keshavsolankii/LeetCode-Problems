@@ -29,3 +29,21 @@ public:
         return ans;
     }
 };
+
+//Another Approach
+class Solution {
+public:
+
+    void inOrder(TreeNode* root, vector<int> &v)
+    {
+        if(!root) return;
+        inOrder(root->left, v);
+        v.push_back(root->val);
+        inOrder(root->right, v);
+    }
+    int kthSmallest(TreeNode* root, int k) {
+        vector<int> v;
+        inOrder(root, v);
+        return v[k-1];
+    }
+};
