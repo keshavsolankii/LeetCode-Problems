@@ -30,7 +30,7 @@ bool check(vector<int> adj[], int vis[], int source)
         for(int i=0; i<V; i++)
         {
             if(!vis[i])
-                if(check(adj, vis, i)) return true;
+                if(check(adj, vis, i)){ return true;}
         }
         return false;
     }
